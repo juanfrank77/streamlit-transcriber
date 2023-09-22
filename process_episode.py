@@ -10,7 +10,7 @@ audio_file = st.file_uploader("Upload audio", type=["wav", "mp3", "m4a"])
 process_button = st.sidebar.button("Transcribe Episode")
 st.sidebar.markdown("**Note**: Processing can take up to 5 mins, please be patient.")
 
-model = whisper.load_model("base", device="cuda")
+model = whisper.load_model("base")
 st.text("Whisper Model Loaded")
 
 if process_button:
