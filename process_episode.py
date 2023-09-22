@@ -13,8 +13,7 @@ def main():
     
     if process_button:
         if audio_file is not None:
-            st.sidebar.info("Transcribing audio...")
-            st.text(audio_file.name)
+            st.text("Loading Whisper Model...")
             episode_info = transcribe_episode(audio_file)
             
             st.markdown(episode_info['text'])
@@ -23,8 +22,10 @@ def main():
             
 def transcribe_episode(audio_file):
     
-    model = whisper.load_model("medium")
+    model = whisper.load_model("base")
     st.text("Whisper Model Loaded")
+
+    st.sidebar.info("Transcribing audio...")
     
     result = model.transcribe(audio_file.name)
     st.sidebar.success("Transcription Complete")
