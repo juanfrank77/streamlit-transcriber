@@ -29,7 +29,7 @@ def transcribe_episode(audio_file):
     segments, _ = model.transcribe(audio_file)
     segments = list(segments)
     st.sidebar.success("Transcription Complete")
-    
+    st.text(segments)
     return segments
     
 if __name__ == '__main__':
