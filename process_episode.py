@@ -17,7 +17,7 @@ def main():
             st.text(audio_file.name)
             episode_info = transcribe_episode(audio_file)
             
-            st.markdown(episode_info['text'])
+            # st.markdown(episode_info['text'])
         else:
             st.sidebar.error("Please upload an episode.")
             
@@ -27,9 +27,10 @@ def transcribe_episode(audio_file):
     st.text("Whisper Model Loaded")
     
     segments, _ = model.transcribe(audio_file)
-    segments = list(segments)
+    for segment in segments:
+        print("[%.2fs -> %.2fs] %s" % (segment.start, segment.end, segment.text))
     st.sidebar.success("Transcription Complete")
-    st.text(segments)
+
     return segments
     
 if __name__ == '__main__':
