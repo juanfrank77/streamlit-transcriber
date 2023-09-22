@@ -16,9 +16,12 @@ st.text("Whisper Model Loaded")
 if process_button:
     if audio_file is not None:
         st.sidebar.info("Transcribing audio...")
-        audio_data = audio_file.read()
+        st.text(audio_file.read())
+        audio = whisper.load_audio("audio.mp3")
+        audio = whisper.pad_or_trim(audio)
+        # result = model.transcribe("NW-S4-Demo-Video.mp3")
+        result = model.transcribe(audio)
         
-        result = model.transcribe(audio_data)
         st.sidebar.success("Transcription Complete")
         
         st.markdown(result['text'])
