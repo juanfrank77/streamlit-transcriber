@@ -21,10 +21,10 @@ def main():
         else:
             st.sidebar.error("Please upload an episode.")
             
-def transcribe_episode(episode):
+def transcribe_episode(audio_file):
     
     model = WhisperModel("medium", device="cpu", compute_type="int8")
-    st.text("Whisper Model Loaded")
+    st.sidebar.info("Whisper Model Loaded")
     
     segments, _ = model.transcribe(audio_file.name)
     segments = list(segments)
