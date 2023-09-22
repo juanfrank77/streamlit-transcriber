@@ -17,8 +17,8 @@ if process_button:
     if audio_file is not None:
         st.sidebar.info("Transcribing audio...")
         audio_data = audio_file.read()
-        st.markdown(audio_data)
-        audio = whisper.load_audio(audio_file)
+        
+        audio = whisper.load_audio(audio_file.name)
         audio = whisper.pad_or_trim(audio)
         
         # result = model.transcribe("NW-S4-Demo-Video.mp3")
