@@ -26,7 +26,7 @@ def transcribe_episode(audio_file):
     model = WhisperModel("medium", device="cpu", compute_type="int8")
     st.text("Whisper Model Loaded")
     
-    segments, _ = model.transcribe(audio_file.name)
+    segments, _ = model.transcribe(audio_file)
     segments = list(segments)
     st.sidebar.success("Transcription Complete")
     
