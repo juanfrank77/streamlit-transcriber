@@ -1,5 +1,5 @@
 import streamlit as st
-from faster_whisper import WhisperModel
+import whisper
 
 def main():
     st.title("Podcast Transcriber")
@@ -17,21 +17,19 @@ def main():
             st.text(audio_file.name)
             episode_info = transcribe_episode(audio_file)
             
-            # st.markdown(episode_info['text'])
+            st.markdown(episode_info['text'])
         else:
             st.sidebar.error("Please upload an episode.")
             
 def transcribe_episode(audio_file):
     
-    model = WhisperModel("medium", device="cpu", compute_type="int8")
+    model = whisper.load_model("medium")
     st.text("Whisper Model Loaded")
     
-    segments, _ = model.transcribe(audio_file)
-    for segment in segments:
-        print("[%.2fs -> %.2fs] %s" % (segment.start, segment.end, segment.text))
+    result = model.transcribe(audio_file.name)
     st.sidebar.success("Transcription Complete")
 
-    return segments
+    return result
     
 if __name__ == '__main__':
     main()
