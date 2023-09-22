@@ -18,7 +18,9 @@ if process_button:
         st.audio(audio_file, format='audio/wav')
         
         st.sidebar.info("Transcribing audio...")
-        result = model.transcribe(audio_file.name)
+        audio_data = audio_file.read()
+        
+        result = model.transcribe(audio_data)
         st.sidebar.success("Transcription Complete")
         
         st.markdown(episode_info['text'])
