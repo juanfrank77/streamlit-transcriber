@@ -23,6 +23,6 @@ if process_button:
         result = model.transcribe(audio_data)
         st.sidebar.success("Transcription Complete")
         
-        st.markdown(episode_info['text'])
+        st.markdown(result['text'])
     else:
         st.sidebar.error("Please upload an episode.")
