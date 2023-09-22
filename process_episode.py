@@ -1,4 +1,5 @@
 import streamlit as st
+from faster_whisper import WhisperModel
 
 def main():
     st.title("Podcast Transcriber")
@@ -21,8 +22,6 @@ def main():
             st.sidebar.error("Please upload an episode.")
             
 def transcribe_episode(episode):
-    # Load the Whisper model
-    from faster_whisper import WhisperModel
     
     model = WhisperModel("medium", device="cuda", compute_type="float16")
     st.text("Whisper Model Loaded")
