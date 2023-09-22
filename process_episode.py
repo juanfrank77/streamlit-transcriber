@@ -14,7 +14,7 @@ def main():
     if process_button:
         if audio_file is not None:
             st.sidebar.info("Transcribing audio...")
-            
+            st.text(audio_file.name)
             episode_info = transcribe_episode(audio_file)
             
             st.markdown(episode_info['text'])
@@ -24,7 +24,7 @@ def main():
 def transcribe_episode(audio_file):
     
     model = WhisperModel("medium", device="cpu", compute_type="int8")
-    st.sidebar.info("Whisper Model Loaded")
+    st.text("Whisper Model Loaded")
     
     segments, _ = model.transcribe(audio_file.name)
     segments = list(segments)
