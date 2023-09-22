@@ -21,7 +21,7 @@ def main():
             st.sidebar.error("Please upload an episode.")
             
 def transcribe_episode(audio_file):
-    
+    st.text(audio_file)
     model = whisper.load_model("base")
     st.text("Whisper Model Loaded")
 
