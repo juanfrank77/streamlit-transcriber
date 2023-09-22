@@ -27,7 +27,7 @@ def transcribe_episode(audio_file):
 
     st.sidebar.info("Transcribing audio...")
     
-    result = model.transcribe(audio_file.name)
+    result = model.transcribe(audio_file.upload_url)
     st.sidebar.success("Transcription Complete")
 
     return result
