@@ -22,15 +22,16 @@ def main():
             
 def transcribe_episode(episode):
     # Load the Whisper model
-    import whisper
+    from faster_whisper import WhisperModel
     
-    model = whisper.load_model("base")
+    model = WhisperModel("medium", device="cuda", compute_type="float16")
     st.text("Whisper Model Loaded")
     
-    result = model.transcribe(audio_file.name)
+    segments, _ = model.transcribe(audio_file.name)
+    segments = list(segments)
     st.sidebar.success("Transcription Complete")
     
-    return result
+    return segments
     
 if __name__ == '__main__':
     main()
