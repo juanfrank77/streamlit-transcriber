@@ -25,9 +25,10 @@ def transcribe_episode(audio_file):
     model = whisper.load_model("base")
     st.text("Whisper Model Loaded")
 
+    audio = whisper.load_audio(audio_file.name)
     st.sidebar.info("Transcribing audio...")
     
-    result = model.transcribe(audio_file.upload_url)
+    result = model.transcribe(audio)
     st.sidebar.success("Transcription Complete")
 
     return result
