@@ -23,7 +23,7 @@ def main():
             
 def transcribe_episode(episode):
     
-    model = WhisperModel("medium", device="cuda", compute_type="float16")
+    model = WhisperModel("medium", device="cpu", compute_type="float16")
     st.text("Whisper Model Loaded")
     
     segments, _ = model.transcribe(audio_file.name)
