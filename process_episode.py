@@ -1,5 +1,5 @@
 import streamlit as st
-from openai_whisper import Transcriber
+from whisper import Transcriber
 
 st.title("Podcast Transcriber")
 
